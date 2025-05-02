@@ -1,0 +1,1 @@
+export {default as InputsBox} from './InputsBox.jsx';
