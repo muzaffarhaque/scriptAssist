@@ -7,6 +7,8 @@ import Landing from './pages/landing/Landing';
 import NotFound from './components/NotFound';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { Login } from './pages/login';
+
 
 
 const ProtectedRoute = ({ children }:any) => {
@@ -24,7 +26,11 @@ export const routes = [
 		children: [
 			{
 				path: '/',
-				element: <Landing />
+				element: <ProtectedRoute children={<Landing/>}/>
+			},
+			{
+				path: '/login',
+				element: <Login />
 			},
 			// {
 			// 	path: "/profile",
@@ -53,6 +59,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 	<StrictMode>
 		<QueryClientProvider client={queryClient}>
 			<RouterProvider router={router} />
+			<ToastContainer/>
 		</QueryClientProvider>
 	</StrictMode>
 );

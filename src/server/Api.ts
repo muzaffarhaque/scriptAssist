@@ -13,6 +13,16 @@ const commonGetApi = async (url:string) => {
 
 export default commonGetApi;
 
+
+export const loginPostApi = async (url:string,data:any) => {
+  try {
+      const res = await axios.post(url,data);
+      return res;
+  } catch (error) {
+      return false;
+  }
+};
+
 export const commonAllApi = async <R = any>(
     url: string = '',
     data: any = '',
