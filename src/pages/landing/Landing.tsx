@@ -6,8 +6,9 @@ import bgImage2 from '../../styles/images/jake-weirick-Q_RBVFFXR_g-unsplash.jpg'
 import { isOk } from "../../utils/reusablefunctions.js";
 import { commonAllAuthApi, commonGetAuthApi } from '../../server/Api';
 import { toast } from 'react-toastify';
-import { LeatestLaunch } from '../../components';
+import { LaunchMap, LeatestLaunch,CrewTable } from '../../components';
 import "./landing.scss";
+
 const Landing: FC = () => {
 	const { isLogin, isLoginHandler } = useAppStore();
 	const [loading, setLoading] = useState<boolean>(true);
@@ -22,26 +23,13 @@ const Landing: FC = () => {
 			} else {
 				toast.error(res?.response?.data?.message || "Something went wrong!");
 			}
+		}catch (error) {
+			toast.error("An error occurred while adding the category.");
 		} finally {
 			setLoading(false);
 		}
 	};
-	const handleAddCategory = async () => {
-		// if(!CategoryName){toast.warn("Enter category Name..");return ''}
-		const formdata1 = new FormData();
-		// formdata1.append("name", CategoryName);
-		try {
-			const res: any = await commonAllAuthApi("/v1/admin/Category/addCategory", formdata1, 'post');
-			if (isOk(res.status)) {
-				scrollTo(0, 0)
-				toast.success("Category added successfully.");
-			} else {
-				toast.error(res?.response?.data?.message || "Something went wrong!");
-			}
-		} catch (error) {
-			toast.error("An error occurred while adding the category.");
-		}
-	};
+
 	useEffect(() => {
 		getALlRockets();
 	}, []);
@@ -94,17 +82,32 @@ const Landing: FC = () => {
 							)
 						})
 					}
-				
+
 
 				</div>
 				{/* rocket card layout End */}
 				<LeatestLaunch rocketList={rocketList} />
-			
+
 			</div>
 		</section>
 
 		{/* --------------------------------------------------- section divider ------------------------ */}
-		
+		<section className='launch-map-section'>
+			<div className="container">
+				<h2 className='text-white '>🗺️ Launchpads locations </h2>
+				<LaunchMap />
+			</div>
+		</section>
+		{/* --------------------------------------------------- section divider ------------------------ */}
+
+
+
+		<section className='crow-table-section'>
+			<div className="container">
+				<h2 className='crow-title'> 🧑‍🚀Crow list </h2>
+				 <CrewTable/>
+			</div>
+		</section>
 	</>
 };
 

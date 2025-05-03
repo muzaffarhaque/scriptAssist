@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { MantineProvider } from '@mantine/core';
 import { theme } from './theme';
+import 'leaflet/dist/leaflet.css';
 import './App.scss';
 
 export default function App() {

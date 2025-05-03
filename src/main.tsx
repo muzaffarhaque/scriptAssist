@@ -22,7 +22,7 @@ export const routes = [
 	{
 		path: '/',
 		element: <App />,
-		errorElement:<NotFound/>,
+		// errorElement:<NotFound/>,
 		children: [
 			{
 				path: '/',
