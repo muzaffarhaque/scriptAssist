@@ -6,7 +6,7 @@ import axios, {
 } from 'axios';
 
 const TOKEN_KEY = 'token_Flyweis';
-const BASE_URL = 'https://mamun-reza-freeshops-backend.vercel.app/api/';
+const BASE_URL = 'https://api.spacexdata.com';
 // const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 // POST Axios Instance

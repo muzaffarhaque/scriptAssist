@@ -44,7 +44,7 @@ export const commonAllAuthApi = async <T = any>(
     config: AxiosRequestConfig = {}
   ): Promise<AxiosResponse<T> | unknown> => {
     try {
-      const response = await postAxiosInstance.request<T>({url, method, data, ...config });
+      const response = await preAxiosInstance.request<T>({url, method, data, ...config });
       return response;
     } catch (error) {
       return error;
@@ -54,7 +54,7 @@ export const commonAllAuthApi = async <T = any>(
 
 export const commonGetAuthApi = async (url:string) => {
     try {
-        const res = await postAxiosInstance?.get(url);
+        const res = await preAxiosInstance?.get(url);
         return res;
     } catch (error) {
         return error;
@@ -62,7 +62,7 @@ export const commonGetAuthApi = async (url:string) => {
 };
 export const commonDeleteAuthApi = async (url:string) => {
     try {
-        const res = await postAxiosInstance?.delete(url);
+        const res = await preAxiosInstance?.delete(url);
         return res;
     } catch (error) {
         return error;
@@ -70,7 +70,7 @@ export const commonDeleteAuthApi = async (url:string) => {
 };
 export const commonPutAuthApi = async (url:string,data:any) => {
     try {
-        const res = await postAxiosInstance?.put(url,data);
+        const res = await preAxiosInstance?.put(url,data);
         return res;
     } catch (error) {
         return error;

@@ -8,11 +8,11 @@ import NotFound from './components/NotFound';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { Login } from './pages/login';
-
+import "./style.scss";
 
 
 const ProtectedRoute = ({ children }:any) => {
-    const token = localStorage.getItem('token_Flyweis');
+    const token = localStorage.getItem('token_script');
     if (!token) {
         return <Navigate to="/login" />;
     }
