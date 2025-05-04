@@ -6,11 +6,12 @@ import bgImage2 from '../../styles/images/jake-weirick-Q_RBVFFXR_g-unsplash.jpg'
 import { isOk } from "../../utils/reusablefunctions.js";
 import { commonAllAuthApi, commonGetAuthApi } from '../../server/Api';
 import { toast } from 'react-toastify';
-import { LaunchMap, LeatestLaunch,CrewTable } from '../../components';
+import { LaunchMap, LeatestLaunch,CrewTable, CommonCard } from '../../components';
 import "./landing.scss";
 
+
 const Landing: FC = () => {
-	const { isLogin, isLoginHandler } = useAppStore();
+	const { isLogin, isLoginHandler,updatedRocketList } = useAppStore();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [rocketList, setRocketList] = useState<any>([]);
 
@@ -20,6 +21,7 @@ const Landing: FC = () => {
 			const res: any = await commonGetAuthApi("/v4/rockets");
 			if (isOk(res.status)) {
 				setRocketList(res?.data);
+				updatedRocketList(res?.data);
 			} else {
 				toast.error(res?.response?.data?.message || "Something went wrong!");
 			}
@@ -64,21 +66,7 @@ const Landing: FC = () => {
 					{
 						rocketList?.map((item: any, index: number) => {
 							return (
-								<div className="rocket-card" key={index}>
-									<div className="image-dev">
-										<img src={item?.flickr_images[0]} alt="Rocket" />
-									</div>
-									<div className="content-frame">
-										<h4>{item?.name || "name"}</h4>
-										<h5>Success Rate PCT is {item?.success_rate_pct || 0}%</h5>
-										<p className='desc'>{item?.description || "loar..."}</p>
-										<div className="date-company-frame">
-											<p className='date'>{item?.first_flight || "3th May"}</p>
-											<p>{item?.company || 'space X'}</p>
-										</div>
-										<button className="btn-primary">Learn More </button>
-									</div>
-								</div>
+								<CommonCard data={item} index={index}/>
 							)
 						})
 					}

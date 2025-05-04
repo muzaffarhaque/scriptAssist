@@ -7,7 +7,7 @@ import Landing from './pages/landing/Landing';
 import NotFound from './components/NotFound';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { Login } from './pages/login';
+import { RocketDetails ,Login} from './pages';
 import "./style.scss";
 
 
@@ -22,7 +22,7 @@ export const routes = [
 	{
 		path: '/',
 		element: <App />,
-		// errorElement:<NotFound/>,
+		errorElement:<NotFound/>,
 		children: [
 			{
 				path: '/',
@@ -31,6 +31,10 @@ export const routes = [
 			{
 				path: '/login',
 				element: <Login />
+			},
+			{
+				path: '/rocket-detail/:id',
+				element: <ProtectedRoute children={<RocketDetails/>}/>
 			},
 			// {
 			// 	path: "/profile",

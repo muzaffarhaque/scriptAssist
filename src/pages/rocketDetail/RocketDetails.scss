@@ -1,0 +1,113 @@
+.rocket-details {
+    padding: 2rem;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    background: black;
+
+    .hero {
+        text-align: center;
+        margin-bottom: 2rem;
+
+        .hero-image {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            margin: 0.5rem 0;
+            // font-size: 2.5rem;
+        }
+
+        p {
+            // font-size: 1rem;
+            color: #eaeaea;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tags {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+
+            span {
+                background: #363636;
+                padding: 0.4rem 0.8rem;
+                border-radius: 5px;
+            }
+        }
+    }
+
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+        .d-block {
+            display: block;
+        }
+        div {
+            background: #222222;
+            color: #d2f2ff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            strong{
+                color: #fff;
+            }
+        }
+    }
+.engines{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    .stage-box{
+        width: 100%;
+        padding: 3%;
+        border-radius: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 380px;
+        margin: 0 auto;
+        background: #1b1b1b;
+    }
+}
+    .engines,
+    .gallery,
+    .payload {
+        margin-bottom: 2rem;
+      
+        h2 {
+            margin-bottom: 1rem;
+            // font-size: 1.5rem;
+            color: #ededed;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 2rem;
+
+            li {
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        .images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+
+            img {
+                width: 100%;
+                border-radius: 8px;
+                object-fit: cover;
+                height: 200px;
+            }
+        }
+    }
+}

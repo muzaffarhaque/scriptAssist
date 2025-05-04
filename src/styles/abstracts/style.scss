@@ -441,7 +441,7 @@
         border-radius: 50%;
         width: 88px;
         height: 88px;
-        color: #199FB1;
+        color: #000000;
     }
     .loader:after,
     .loader:before {
@@ -457,7 +457,7 @@
         animation: 1s spin linear infinite;
     }
     .loader:after {
-        color: #FF8553;
+        color: #1a02bb;
         transform: rotateY(70deg);
         animation-delay: 0.4s;
     }
