@@ -1,9 +1,10 @@
-name: Deploy
+name: scriptAssist
+
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
