@@ -5,7 +5,7 @@ import axios, {
   AxiosError,
 } from 'axios';
 
-const TOKEN_KEY = 'token_Flyweis';
+const TOKEN_KEY = 'token_script';
 const BASE_URL = 'https://api.spacexdata.com';
 // const BASE_URL = import.meta.env.VITE_BASE_URL;
 

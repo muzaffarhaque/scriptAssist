@@ -84,7 +84,7 @@ const ListingPage: FC = () => {
                                 filteredList.length > 0 ? filteredList.map((item: any, index: number) => (
                                     <CommonCard key={item.id} data={item} index={index} />
                                 )) : (
-                                    <p>No rockets found.</p>
+                                    <h4 className='not-found'>No Result Found.</h4>
                                 )
                             }
                         </div>

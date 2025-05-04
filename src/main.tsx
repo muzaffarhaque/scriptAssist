@@ -27,7 +27,7 @@ export const routes = [
 		children: [
 			{
 				path: '/',
-				element: <ProtectedRoute children={<Landing/>}/>
+				element: <Landing/>,
 			},
 			{
 				path: '/login',

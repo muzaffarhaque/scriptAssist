@@ -3,7 +3,7 @@ import { Image, Title } from "@mantine/core";
 import { useAppStore } from '../../store/app.store';
 import bgImage from '../../styles/images/spacex-6SbFGnQTE8s-unsplash.jpg';
 import bgImage2 from '../../styles/images/jake-weirick-Q_RBVFFXR_g-unsplash.jpg';
-import { isOk } from "../../utils/reusablefunctions.js";
+import { isOk, isToken } from "../../utils/reusablefunctions.js";
 import { commonAllAuthApi, commonGetAuthApi } from '../../server/Api';
 import { toast } from 'react-toastify';
 import { LaunchMap, LeatestLaunch, CrewTable, CommonCard } from '../../components';
@@ -43,6 +43,8 @@ const Landing: FC = () => {
 
 		<section className='hero-section'>
 			<img src={bgImage} alt='img' className='hero-image' />
+			{!isToken() && <NavLink to="/login" className="is-login-btn">Login </NavLink>}
+			
 			<div className="container">
 				<h1 className='Orbitron-family text-white'>Space X</h1>
 				<div className="here-wrapper">
