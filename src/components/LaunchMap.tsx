@@ -1,9 +1,11 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { isOk } from '../utils/reusablefunctions';
 import { toast } from 'react-toastify';
 import { commonGetAuthApi } from '../server/Api';
+import { Box, Modal, Button, Typography, ThemeProvider, createTheme } from '@mui/material';
+
 
 type Launchpad = {
   id: string;
@@ -16,6 +18,9 @@ type Launchpad = {
 };
 
 const LaunchMap = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const [launchpads, setLaunchpads] = useState<Launchpad[]>([]);
   const getLaunchpads = async () => {
     try {
@@ -36,7 +41,20 @@ const LaunchMap = () => {
     const randomPads = data?.sort(() => Math.random() - 0.5).slice(0, 4);
     return randomPads;
   }
-
+  const style = {
+    position: 'absolute' as const,
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    borderRadius: '8px',
+    boxShadow: 24,
+    p: 4,
+  };
+  const localTheme = createTheme({
+    palette: { mode: 'light' }
+  });
   return (
     <>
       {/* Launchpads card layout start */}
@@ -58,7 +76,7 @@ const LaunchMap = () => {
                     <p className='date'>{item?.region || "us"}</p>
                     <p>{item?.status || ' -'}</p>
                   </div>
-                  <button className="btn-primary">Learn More </button>
+                  <button className="btn-primary" onClick={handleOpen}>Learn More </button>
                 </div>
               </div>
             )
@@ -86,7 +104,20 @@ const LaunchMap = () => {
           ))}
         </MapContainer>
       </div>
-
+         <ThemeProvider theme={localTheme}>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-description" sx={{ mt: 2 }}>
+            Unable to open we found some api issues in this details page.
+          </Typography>
+        </Box>
+      </Modal>
+      </ThemeProvider>
     </>
   );
 };

@@ -137,7 +137,7 @@ const RocketDetails: FC = () => {
     }, []);
 
 
-    if (loading) return <div><Loader/></div>;
+    if (loading) return <div><Loader /></div>;
     return (
         <div className="rocket-details ">
             <div className="container">
@@ -254,7 +254,7 @@ const RocketDetails: FC = () => {
 
                 <div className="payload">
                     <h2>Payload Weights</h2>
-                    {data.payload_weights.map((payload:any) => (
+                    {data.payload_weights.map((payload: any) => (
                         <div key={payload.id}>
                             <strong>{payload.name}:</strong> {payload.kg} kg / {payload.lb} lb
                         </div>
@@ -264,7 +264,7 @@ const RocketDetails: FC = () => {
                 <div className="gallery">
                     <h2>Gallery</h2>
                     <div className="images">
-                        {data.flickr_images.map((img:any, i:number) => (
+                        {data.flickr_images.map((img: any, i: number) => (
                             <img key={i} src={img} alt={`Rocket image ${i + 1}`} />
                         ))}
                     </div>
@@ -276,7 +276,10 @@ const RocketDetails: FC = () => {
                     <div className="rocket_list-wrapper">
                         <div className="sub-head-title-frame">
                             <h2>🚀 Rockets</h2>
-                            <NavLink to="/rockets" className="btn-primary">view All</NavLink>
+                            <NavLink to={{
+                                pathname: `/listPage`,
+                                search: '?key=rockets&company=SpaceX'
+                            }} className="btn-primary">view All</NavLink>
                         </div>
                         <div className="grid-container">
                             {

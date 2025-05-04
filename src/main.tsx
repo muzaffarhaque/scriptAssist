@@ -7,8 +7,9 @@ import Landing from './pages/landing/Landing';
 import NotFound from './components/NotFound';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { RocketDetails ,Login} from './pages';
+import { RocketDetails ,Login, ListingPage} from './pages';
 import "./style.scss";
+import { ErrorPage } from './components';;
 
 
 const ProtectedRoute = ({ children }:any) => {
@@ -22,7 +23,7 @@ export const routes = [
 	{
 		path: '/',
 		element: <App />,
-		errorElement:<NotFound/>,
+		errorElement:<ErrorPage/>,
 		children: [
 			{
 				path: '/',
@@ -33,6 +34,10 @@ export const routes = [
 				element: <Login />
 			},
 			{
+				path: '/listPage',
+				element: <ListingPage />
+			},
+			{
 				path: '/rocket-detail/:id',
 				element: <ProtectedRoute children={<RocketDetails/>}/>
 			},
@@ -40,12 +45,13 @@ export const routes = [
 			// 	path: "/profile",
 			// 	element: <ProtectedRoute children={<Profile/>}/>
 			// },
-			// {
-			// 	path:'/*',
-			// 	element:<ErrorPage/>
-			// },
+			
 		]
-	}
+	},
+	{
+		path:'/*',
+		element:<NotFound/>
+	},
 ];
 
 const router = createBrowserRouter(routes);
@@ -60,10 +66,10 @@ const queryClient = new QueryClient({
 	}
 });
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-	<StrictMode>
+	<>
 		<QueryClientProvider client={queryClient}>
 			<RouterProvider router={router} />
 			<ToastContainer/>
 		</QueryClientProvider>
-	</StrictMode>
+	</>
 );

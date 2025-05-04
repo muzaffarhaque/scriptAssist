@@ -6,12 +6,13 @@ import bgImage2 from '../../styles/images/jake-weirick-Q_RBVFFXR_g-unsplash.jpg'
 import { isOk } from "../../utils/reusablefunctions.js";
 import { commonAllAuthApi, commonGetAuthApi } from '../../server/Api';
 import { toast } from 'react-toastify';
-import { LaunchMap, LeatestLaunch,CrewTable, CommonCard } from '../../components';
+import { LaunchMap, LeatestLaunch, CrewTable, CommonCard } from '../../components';
 import "./landing.scss";
+import { NavLink } from 'react-router-dom';
 
 
 const Landing: FC = () => {
-	const { isLogin, isLoginHandler,updatedRocketList } = useAppStore();
+	const { isLogin, isLoginHandler, updatedRocketList } = useAppStore();
 	const [loading, setLoading] = useState<boolean>(true);
 	const [rocketList, setRocketList] = useState<any>([]);
 
@@ -25,7 +26,7 @@ const Landing: FC = () => {
 			} else {
 				toast.error(res?.response?.data?.message || "Something went wrong!");
 			}
-		}catch (error) {
+		} catch (error) {
 			toast.error("An error occurred while adding the category.");
 		} finally {
 			setLoading(false);
@@ -61,12 +62,21 @@ const Landing: FC = () => {
 			{/* <img src={bgImage2} alt='img' className='hero-image' /> */}
 			<div className="container">
 				<h2 className='text-white title'>🚀 Top Rockets List </h2>
+				<div className="sub-head-title-frame">
+					<h2></h2>
+					<NavLink 
+					 to={{
+						pathname: `/listPage`,
+						search: '?key=rockets&company=SpaceX'
+					}}
+					 className="btn-primary">view All</NavLink>
+				</div>
 				{/* rocket card layout start */}
 				<div className="grid-container">
 					{
 						rocketList?.map((item: any, index: number) => {
 							return (
-								<CommonCard data={item} index={index}/>
+								<CommonCard data={item} index={index} />
 							)
 						})
 					}
@@ -93,7 +103,7 @@ const Landing: FC = () => {
 		<section className='crow-table-section'>
 			<div className="container">
 				<h2 className='crow-title'> 🧑‍🚀Crow list </h2>
-				 <CrewTable/>
+				<CrewTable />
 			</div>
 		</section>
 	</>
