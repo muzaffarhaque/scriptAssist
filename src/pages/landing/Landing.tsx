@@ -44,7 +44,7 @@ const Landing: FC = () => {
 		<section className='hero-section'>
 			<img src={bgImage} alt='img' className='hero-image' />
 			{!isToken() && <NavLink to="/login" className="is-login-btn">Login </NavLink>}
-			
+
 			<div className="container">
 				<h1 className='Orbitron-family text-white'>Space X</h1>
 				<div className="here-wrapper">
@@ -52,8 +52,6 @@ const Landing: FC = () => {
 						<h2 className=''>Explore About Space</h2>
 						<p>Space exploration encompasses the investigation of the universe beyond Earth, using both robotic and human missions to gather data, study celestial bodies, and potentially colonize other planets. It's a field driven by scientific curiosity, the desire to understand the cosmos, and the potential for advancements in technology and human understanding. </p>
 						<button className="btn-primary">Get Started</button>
-
-
 					</div>
 				</div>
 			</div>
