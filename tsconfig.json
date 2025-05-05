@@ -11,6 +11,7 @@
 		"skipLibCheck": true,
 		"esModuleInterop": false,
 		"allowSyntheticDefaultImports": true,
+		"allowImportingTsExtensions": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
 		"module": "commonjs",
@@ -19,6 +20,7 @@
 		"isolatedModules": true,
 		"noEmit": true,
 		"jsx": "react-jsx"
+		
 	},
 	"include": [
 		"src"

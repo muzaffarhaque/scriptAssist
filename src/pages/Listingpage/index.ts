@@ -1,1 +1,1 @@
-export {default as ListingPage} from './ListingPage';
+export {default as ListingPage} from './ListingPage.tsx';

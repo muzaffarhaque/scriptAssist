@@ -2,9 +2,9 @@ import {StrictMode} from 'react'
 import ReactDOM from 'react-dom/client';
 import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import App from './App';
-import Landing from './pages/landing/Landing';
-import NotFound from './components/NotFound';
+import App from './App.tsx';
+import Landing from './pages/landing/Landing.tsx';
+import NotFound from './components/NotFound.tsx';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { RocketDetails ,Login, ListingPage} from './pages';
